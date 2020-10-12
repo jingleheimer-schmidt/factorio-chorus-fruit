@@ -1,12 +1,12 @@
 
--- find a non-colliding position within ±32 tiles to teleport to
+-- find a non-colliding position within ±32 tiles to teleport
 function find_valid_position(player, player_position)
   -- calculate new position
   local new_position = {
     x = (player_position.x + math.random(-32,32)),
     y = (player_position.y + math.random(-32,32))
   }
-  -- check if new player can fit in new position
+  -- check if player can fit within 2 tiles of new position
   local valid_position = player.surface.find_non_colliding_position("character", new_position, 2, 1)
   return valid_position
 end
@@ -22,6 +22,7 @@ function calculate_ouch(player, player_position, valid_position)
   return ouch
 end
 
+-- deal damage or kill player, and play damage and teleporting sounds
 function run_damage_logic(valid_position, player, ouch)
   -- if player health will be at or below zero then kill them
   if ( ouch <= 0 ) then
@@ -49,6 +50,7 @@ function run_damage_logic(valid_position, player, ouch)
   end
 end
 
+-- teleport the player
 function chorus_fruit_teleport(player, player_position, valid_position)
   -- calculate ouch
   local ouch = calculate_ouch(player, player_position, valid_position)
