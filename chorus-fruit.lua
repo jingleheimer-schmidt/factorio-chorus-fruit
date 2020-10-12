@@ -1,4 +1,4 @@
-local sounds = require ("eating-sound")
+local sounds = require ("eating-sounds")
 
 local chorusFruit = {
   type = "capsule",
