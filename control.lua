@@ -101,9 +101,9 @@ script.on_event(defines.events.on_script_trigger_effect, function(event)
                   if valid_position then
                     chorus_fruit_teleport(player, player_position, valid_position)
                   else
-                    -- player.player.print("No safe landing nearby")
-                    game.play_sound{
-                    path = "ender-pearl-failed-landing", position = player_position, volume_modifier = 1}
+                    -- -- player.player.print("No safe landing nearby")
+                    -- game.play_sound{
+                    -- path = "ender-pearl-failed-landing", position = player_position, volume_modifier = 1}
                   end
                 end
               end
