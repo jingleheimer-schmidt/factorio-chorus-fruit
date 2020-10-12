@@ -13,7 +13,7 @@ local chorusFruit = {
     {
       type = "projectile",
       ammo_category = "capsule",
-      cooldown = 16,
+      cooldown = 60,
       range = 0,
       ammo_type =
       {
