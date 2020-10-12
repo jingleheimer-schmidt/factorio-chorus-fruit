@@ -1,13 +1,10 @@
 
 -- find a non-colliding position within ±32 tiles to teleport to
 function find_valid_position(player, player_position)
-  -- calculate offsets
-  local x_offset = math.random(-32,32)
-  local y_offset = math.random(-32,32)
   -- calculate new position
   local new_position = {
-    x = (player_position.x + x_offset),
-    y = (player_position.y + y_offset)
+    x = (player_position.x + math.random(-32,32)),
+    y = (player_position.y + math.random(-32,32))
   }
   -- check if new player can fit in new position
   local valid_position = player.surface.find_non_colliding_position("character", new_position, 2, 1)
@@ -20,7 +17,7 @@ function calculate_ouch(player, player_position, valid_position)
   local distance = math.floor(((player_position.x - valid_position.x) ^ 2 + (player_position.y - valid_position.y) ^ 2) ^ 0.5)
   -- calculates a random variable between .91 and 1.09
   local almost = (math.random(91, 109))*.01
-  -- sets ouch as ~55% of distance traveled from player health
+  -- sets ouch as ~55% of distance traveled
   local ouch = distance*(.55*almost)
   return ouch
 end
