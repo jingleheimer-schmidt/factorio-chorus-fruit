@@ -1,9 +1,9 @@
 
--- find a non-colliding position within ±64 tiles to teleport to
+-- find a non-colliding position within ±32 tiles to teleport to
 function find_valid_position(player, player_position)
   -- calculate offsets
-  local x_offset = math.random(-64,64)
-  local y_offset = math.random(-64,64)
+  local x_offset = math.random(-32,32)
+  local y_offset = math.random(-32,32)
   -- calculate new position
   local new_position = {
     x = (player_position.x + x_offset),
@@ -20,8 +20,8 @@ function calculate_ouch(player, player_position, valid_position)
   local distance = math.floor(((player_position.x - valid_position.x) ^ 2 + (player_position.y - valid_position.y) ^ 2) ^ 0.5)
   -- calculates a random variable between .91 and 1.09
   local almost = (math.random(91, 109))*.01
-  -- sets ouch as ~88% of distance traveled from player health
-  local ouch = distance*(.88*almost)
+  -- sets ouch as ~55% of distance traveled from player health
+  local ouch = distance*(.55*almost)
   return ouch
 end
 
@@ -34,12 +34,20 @@ function run_damage_logic(valid_position, player, ouch)
   -- otherwise subtract ~88% of distance traveled from player health
   else
     player.health = player.health - ouch
-    if ( ouch <= 16) then
+    if ( ouch <= 8) then
       game.play_sound{
-        path = "fall-small", position = valid_position, volume_modifier = 1}
+        path = "fall-small", position = valid_position, volume_modifier = .7
+      }
+      game.play_sound{
+        path = "portal-1", position = valid_position, volume_modifier = 1
+      }
     else
       game.play_sound{
-        path = "fall-big", position = valid_position, volume_modifier = 1}
+        path = "fall-big", position = valid_position, volume_modifier = .7
+      }
+      game.play_sound{
+        path = "portal-2", position = valid_position, volume_modifier = 1
+      }
     end
   end
 end
@@ -60,7 +68,7 @@ script.on_event(defines.events.on_script_trigger_effect, function(event)
     -- adds the player and player position as a variable
     local player = event.source_entity
     local player_position = event.source_position
-    -- attempt to teleport the player randomly within ±64 tiles 8 times 
+    -- attempt to teleport the player randomly within ±32 tiles 8 times
     local valid_position = find_valid_position(player, player_position)
     if valid_position then
       chorus_fruit_teleport(player, player_position, valid_position)
