@@ -28,23 +28,23 @@ function run_damage_logic(valid_position, player, ouch)
   if ( ouch <= 0 ) then
     game.play_sound{
       path = "fall-big", position = valid_position, volume_modifier = 1}
-      player.die()
+      -- player.die()
   -- otherwise subtract ~88% of distance traveled from player health
   else
-    player.health = player.health - ouch
+    -- player.health = player.health - ouch
     if ( ouch <= 8) then
+      -- game.play_sound{
+      --   path = "fall-small", position = valid_position, volume_modifier = .7
+      -- }
       game.play_sound{
-        path = "fall-small", position = valid_position, volume_modifier = .7
-      }
-      game.play_sound{
-        path = "portal-1", position = valid_position, volume_modifier = 1
+        path = "portal-1", position = valid_position, volume_modifier = .7
       }
     else
+      -- game.play_sound{
+      --   path = "fall-big", position = valid_position, volume_modifier = .7
+      -- }
       game.play_sound{
-        path = "fall-big", position = valid_position, volume_modifier = .7
-      }
-      game.play_sound{
-        path = "portal-2", position = valid_position, volume_modifier = 1
+        path = "portal-2", position = valid_position, volume_modifier = .7
       }
     end
   end
