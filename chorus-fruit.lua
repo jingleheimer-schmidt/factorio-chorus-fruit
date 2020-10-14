@@ -29,7 +29,7 @@ local chorusFruit = {
             {
               {
                 type = "damage",
-                damage = {type = "physical", amount = -16}
+                damage = {type = "physical", amount = -8}
               },
               {
                 type = "play-sound",
