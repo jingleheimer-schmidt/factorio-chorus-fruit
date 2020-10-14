@@ -1,10 +1,10 @@
 
--- find a non-colliding position within ±32 tiles to teleport
+-- find a non-colliding position within ±64 tiles to teleport
 function find_valid_position(player, player_position)
   -- calculate new position
   local new_position = {
-    x = (player_position.x + math.random(-32,32)),
-    y = (player_position.y + math.random(-32,32))
+    x = (player_position.x + math.random(-64,64)),
+    y = (player_position.y + math.random(-64,64))
   }
   -- check if player can fit within 2 tiles of new position
   local valid_position = player.surface.find_non_colliding_position("character", new_position, 2, 1)
