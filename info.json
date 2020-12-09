@@ -1,9 +1,9 @@
 {
 	"name": "factorio-chorus-fruit",
 	"version": "0.0.1",
-	"title": "Chorus Fruit",
+	"title": "Chorus fruit",
 	"description": "Adds chorus fruit you can eat to teleport randomly, kind of like minecraft.",
 	"author": "asher_sky",
 	"dependencies": ["base >= 1.0.0"],
-	"factorio_version": "1.0"
+	"factorio_version": "1.1"
 }
