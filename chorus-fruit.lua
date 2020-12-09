@@ -12,6 +12,7 @@ local chorusFruit = {
     attack_parameters =
     {
       type = "projectile",
+      activation_type = "consume",
       ammo_category = "capsule",
       cooldown = 60,
       range = 0,
