@@ -5,7 +5,8 @@ local chorusFruit = {
   name = "chorus-fruit",
   icon = "__factorio-chorus-fruit__/graphics/Chorus_Fruit_JE2_BE2.png",
   icon_size = 150,
-  subgroup = "raw-resource",
+  subgroup = "transport",
+  order = "b[personal-transport]-c[spidertron]-b[remote]-a[chorusfruit]",
   capsule_action =
   {
     type = "use-on-self",
@@ -46,10 +47,26 @@ local chorusFruit = {
       }
     }
   },
-  order = "h[raw-fish][chorus-fruit]",
   stack_size = 64
 }
 
+local chorusFruitRecipe = {
+  type = "recipe",
+  name = "chorus-fruit",
+  category = "crafting-with-fluid",
+  subgroup = "transport",
+  order = "b[personal-transport]-c[spidertron]-b[remote]-a[chorusfruit]",
+  ingredients = {
+    {"wood",4},
+    {"uranium-ore",2},
+    {type="fluid", name="water", amount=400}
+  },
+  energy_required = 64,
+  result = "chorus-fruit",
+  enabled = "true"
+}
+
 data:extend({
-  chorusFruit
+  chorusFruit,
+  chorusFruitRecipe
 })
